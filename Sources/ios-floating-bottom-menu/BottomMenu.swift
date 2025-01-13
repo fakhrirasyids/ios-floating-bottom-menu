@@ -10,11 +10,29 @@ import SwiftUI
 public struct BottomMenu<TabType: BottomMenuTab>: View {
     let tabs: [TabType]
     @Binding var selectedTab: TabType
-    var cornerRadius: CGFloat = 20
-    var backgroundColor: Color = .white
-    var shadowColor: Color = .gray.opacity(0.4)
-    var selectedIconColor: Color = .black
-    var unselectedIconColor: Color = .gray
+    var cornerRadius: CGFloat
+    var backgroundColor: Color
+    var shadowColor: Color
+    var selectedIconColor: Color
+    var unselectedIconColor: Color
+
+    public init(
+        tabs: [TabType],
+        selectedTab: Binding<TabType>,
+        cornerRadius: CGFloat = 20,
+        backgroundColor: Color = .white,
+        shadowColor: Color = .gray.opacity(0.4),
+        selectedIconColor: Color = .black,
+        unselectedIconColor: Color = .gray
+    ) {
+        self.tabs = tabs
+        self._selectedTab = selectedTab
+        self.cornerRadius = cornerRadius
+        self.backgroundColor = backgroundColor
+        self.shadowColor = shadowColor
+        self.selectedIconColor = selectedIconColor
+        self.unselectedIconColor = unselectedIconColor
+    }
 
     public var body: some View {
         VStack {
